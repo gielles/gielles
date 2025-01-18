@@ -1,5 +1,5 @@
 - 👋 Hi, I’m @gielles
-- 👀 I’m interested in Computers, Microsoft Arm templates, Kubernetes, aviation, Microsoft Azure, AWS
+- 👀 I’m interested in Computers, taskfile, Kubernetes, aviation, AWS
 - 🌱 I’m currently learning CKA, taskfile, yaml
 
 <!---

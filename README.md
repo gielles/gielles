@@ -1,5 +1,5 @@
 - 👋 Hi, I’m @gielles
-- 👀 I’m interested in Computers, taskfile, Kubernetes, aviation, AWS
+- 👀 I’m interested in Computers, taskfile, Kubernetes, aviation, AWS, terraform, python, yaml
 - 🌱 I’m currently learning CKA, taskfile, yaml
 
 <!---

@@ -33,7 +33,7 @@ cilium:
         repository: "quay.io/cilium/hubble-relay"
         tag: "v1.17.2"
   ui:
-     enableded: true
+     enableded: false
      backend:
        image:          
          repository: "quay.io/cilium/hubble-ui-backend"
@@ -42,18 +42,6 @@ cilium:
         image:          
          repository: "quay.io/cilium/hubble-ui"
          tag: "v1.17.2"          
-     ingress:
-       enabled: true
-       annotations:
-         cert-manager.io/cluster-issuer: letsencrypt-prod
-         # kubernetes.io/tls-acme: "true"    
-       ingressClassName: traefik
-       hosts:
-         - hubble-ui.tuxhut.local
-       # tls:
-       #   - secretname: hubble-uit-cert
-       #   - hosts:
-       #       - hubble-uit.tuxhut.local
   securityContext:
     capabilities:
       ciliumAgent:

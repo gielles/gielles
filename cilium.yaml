@@ -1,0 +1,73 @@
+cilium:
+  kubeProxyReplacement: false
+  cgroup:
+    hostRoot: /sys/fs/cgroup
+    automount:
+      enabled: true
+  image:
+    repository: "quay.io/cilium/cilium"
+    #tag: "v1.17.2"
+  certgen:
+    image: 
+     repository: "quay.io/cilium/certgen"
+     #tag: "v0.2.1"
+  operator:
+    replicas: 1
+    image:
+      repository: "quay.io/cilium/operator"
+      #tag: "v1.17.2"
+  ipam:
+    mode: kubernetes
+    # operator:
+    #   clusterPoolIPv4PodCIDRList: ["192.168.40.100/28"]   
+  prometheus:
+    enabled: false
+    serviceMonitor:
+      enabled: false
+      interval: "30s"
+  hubble:
+    enabled: true
+    relay:
+      enabled: true
+      image: 
+        repository: "quay.io/cilium/hubble-relay"
+        tag: "v1.17.2"
+  ui:
+     enableded: true
+     backend:
+       image:          
+         repository: "quay.io/cilium/hubble-ui-backend"
+         tag: "v0.13.1"  
+     frontend:
+        image:          
+         repository: "quay.io/cilium/hubble-ui"
+         tag: "v1.17.2"          
+     ingress:
+       enabled: true
+       annotations:
+         cert-manager.io/cluster-issuer: letsencrypt-prod
+         # kubernetes.io/tls-acme: "true"    
+       ingressClassName: traefik
+       hosts:
+         - hubble-ui.tuxhut.local
+       # tls:
+       #   - secretname: hubble-uit-cert
+       #   - hosts:
+       #       - hubble-uit.tuxhut.local
+  securityContext:
+    capabilities:
+      ciliumAgent:
+        - CHOWN
+        - KILL
+        - NET_ADMIN
+        - NET_RAW
+        - IPC_LOCK
+        - SYS_ADMIN
+        - SYS_RESOURCE
+        - DAC_OVERRIDE
+        - FOWNER
+        - SETGID
+        - SETUID
+      cleanCiliumState:
+        - NET_ADMIN
+        - SYS_ADMIN

@@ -1,0 +1,39 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kyverno-plugin-config
+  namespace: policy-reporter
+data:
+  config.yaml: |
+    leaderElection:
+    enabled: false
+    releaseOnCancel: true
+    leaseDuration: 15
+    renewDeadline: 10
+    retryPeriod: 2
+    lockName: kyverno-plugin
+
+    logging:
+      api: false
+      server: false
+      encoding: console
+      logLevel: 0
+
+    server:
+      basicAuth:
+        username:
+        password:
+        secretRef:
+
+
+    blockReports:
+        enabled: false
+        eventNamespace: default
+        policyReport:
+          annotations: []
+          labels: []
+        results:
+          keepOnlyLatest: false
+          maxPerReport: 200
+        source: Kyverno Event
+  

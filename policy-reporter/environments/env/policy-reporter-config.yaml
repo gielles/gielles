@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: policy-reporter-config
+  namespace: policy-reporter
+data:
+  config.yaml: |
+    crd:
+      targetConfig: false
+
+    target:
+      loki:
+        host: "http://loki"
+        path: "/loki/api/v1/push"
+        skipTLS: true
+        minimumSeverity: "info, warning, error"
+        skipExistingOnStartup: true
